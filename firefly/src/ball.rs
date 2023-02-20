@@ -40,8 +40,9 @@ impl Ball {
             let factor: f32 = (num_layer - i) as f32;
             let l = 1.0 - factor * 0.1;
             let r = dr * factor;
+            let alpha = 0.4;
             draw.ellipse()
-                .color(hsla(self.hue, 1.0, l, 0.4))
+                .color(hsla(self.hue, 1.0, l, alpha))
                 .w_h(r, r)
                 .x_y(point.x, point.y);
         }

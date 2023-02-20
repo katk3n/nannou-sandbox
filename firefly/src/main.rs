@@ -31,7 +31,7 @@ fn event(_app: &App, _model: &mut Model, _event: Event) {}
 
 fn update(app: &App, model: &mut Model, _update: Update) {
     let t = app.time;
-    let theta = 0.5 * t as f32;
+    let theta = 0.2 * t as f32;
 
     for ball in &mut model.balls {
         ball.set_theta(theta);
@@ -41,8 +41,14 @@ fn update(app: &App, model: &mut Model, _update: Update) {
 fn view(app: &App, model: &Model, frame: Frame) {
     let draw = app.draw();
     draw.blend(BLEND_ADD);
-    draw.background().color(BLACK);
+    //draw.background().color(BLACK);
 
+    // to draw shadow
+    let win = app.window_rect();
+    draw.rect().wh(win.wh()).rgba(0.0, 0.0, 0.0, 0.1);
+    draw.to_frame(app, &frame).unwrap();
+
+    // draw balls
     for ball in &model.balls {
         ball.draw(&draw);
     }
