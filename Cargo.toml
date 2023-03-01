@@ -3,6 +3,6 @@ members = [
     "firefly",
     "firefly2",
     "audio-test",
-    "audio-test2",
+    "audio-spectrum",
 ]
 resolver = "2"

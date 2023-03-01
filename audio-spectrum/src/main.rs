@@ -102,11 +102,10 @@ fn view(app: &App, model: &Model, frame: Frame) {
     let max_x = boundary.right();
 
     for (fr, amp) in model.spectrum.iter() {
-        let x =
-            fr.val() * (max_x - min_x) / (MAX_FREQUENCY - MIN_FREQUENCY) - (max_x - min_x) / 2.0;
+        let x = map_range(fr.val(), MIN_FREQUENCY, MAX_FREQUENCY, min_x, max_x);
         let height = amp.val() * 1000.0;
         let width = 10.0;
-        let hue = (fr.val() - MIN_FREQUENCY) / (MAX_FREQUENCY - MIN_FREQUENCY);
+        let hue = map_range(fr.val(), MIN_FREQUENCY, MAX_FREQUENCY, 0.0, 1.0);
         draw.ellipse()
             .color(hsla(hue, 1.0, 0.5, 0.2))
             .w_h(width, height)
