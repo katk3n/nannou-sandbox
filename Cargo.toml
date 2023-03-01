@@ -1,5 +1,8 @@
 [workspace]
 members = [
     "firefly",
+    "firefly2",
+    "audio-test",
+    "audio-test2",
 ]
 resolver = "2"
